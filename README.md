@@ -1,2 +1,3 @@
-# lyte-chat-web-nodejs-mongodb-pusher
-Lyte chat - A web chatting platform built on nodejs, mongodb ans pusher
+# Lyte Chat
+Chatting web application built on nodejs, mongodb and pusher with authentication, one to one chat, message seen/unseen, new message notification features.
+![alt text](http://url/to/img.png)
