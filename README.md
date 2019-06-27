@@ -1,5 +1,8 @@
 # Lyte Chat
-Chatting web application built on nodejs, mongodb and pusher with authentication, one to one chat, message seen/unseen, new message notification, emoji sending features.
+Chatting web application with authentication, one to one chat, message seen/unseen, new message notification, emoji sending features.
+
+Built on -
+NodeJs, MongoDB, ExpressJs, Pusher, EJS templating engine
 
 Working snapshot - 
 
