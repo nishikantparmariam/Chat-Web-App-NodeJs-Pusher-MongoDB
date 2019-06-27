@@ -1,7 +1,7 @@
 const MongoClient = require("mongodb").MongoClient;
 const ObjectID = require("mongodb").ObjectID;
 const dbname = "chat-app";
-const url = "mongodb+srv://niks:niks@cluster0-fif98.mongodb.net/test?retryWrites=true&w=majority";
+const url = "url db";
 const mongoOptions = {useNewUrlParser:true};
 
 const state = {
