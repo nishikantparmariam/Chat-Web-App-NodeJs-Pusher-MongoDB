@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+    <title>Sign Up</title>
+    <style>
+        .btn-primary {
+            background: #1DA1F2;
+            border-color:rgba(0,0,0,0.2);
+        }
+    </style>
+  </head>
+  <body  style="background:#E6ECF0;font-family: 'Quicksand', sans-serif;">    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <br><br>
+                <h2>Lyte Chat</h2>
+                <br>
+                <div class="card" style="width: 100%;">                   
+                    <div class="card-body">
+                        <h5 class="card-title">Sign Up</h5>
+                        <br>                        
+                        <%if (typeof errors!='undefined') {%>
+                            <%errors.forEach((err)=>{%>
+                                <div class="alert alert-danger"><%=err.message%></div>
+                            <%})%>    
+                        <%}%>     
+                        <%if (typeof success!='undefined') {%>
+                            <%success.forEach((err)=>{%>
+                                <div class="alert alert-success"><%=err.message%></div>
+                            <%})%>    
+                        <%}%>                                                
+                        <form method="POST" action="/signup">                            
+                            <input type="text" class="form-control" name="fullname" placeholder="Full Name" value="<%=data.fullname%>">
+                            <br>                          
+                            <input type="text" class="form-control" style="padding-right:30px;" name="username" placeholder="Username (Only english alphabets)" id="username" onkeyup="checkusername()"  value="<%=data.username%>">
+                            <div id="username_status" style="margin-top:-39px;margin-right:5px;z-index:99;position: relative;float:right !important;"></div>
+                            <br>                            
+                            <input type="password" class="form-control" name="password" placeholder="New Password"  value="<%=data.password%>">
+                            <br>
+                            <input type="password" class="form-control" name="password2" placeholder="Confirm Password"  value="<%=data.password2%>">
+                            <br>
+                            <input type="submit" value="Sign Up" class="btn btn-primary">
+                            <a style="float:right;" href="/login">Login &raquo;</a>
+                        </form>
+                    </div>
+                </div>
+                <br>
+                <div style="text-align: center;color:#777;font-size:12px;">
+                        <i class="fa fa-copyright"></i> Copyright 2019 | NISHIKANT PARMAR
+                </div>                  
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </div>    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script>
+        //OPTIONAL
+        function checkusername(){
+
+            var val = $('#username').val().trim();
+            var username_status = $('#username_status');
+        
+            if(val!=''){
+                fetch('/checkforuser/'+val,{method:'get'}).then((res)=>{
+                    return res.json();
+                }).then((data)=>{
+                    if(data.error===false){
+                        if(data.found===false){
+                            username_status.html("<div style='color:green;font-size:25px;'><i class='fa fa-check-circle'></i></div>");
+                        } else {
+                            username_status.html("<div style='color:red;font-size:25px;'><i class='fa fa-times-circle'></i></div>");
+                        }
+                    } else {
+                        username_status.html("");
+                    }
+                });
+
+            }
+        }
+    </script>
+  </body>
+</html>
