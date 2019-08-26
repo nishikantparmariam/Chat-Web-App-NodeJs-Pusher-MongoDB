@@ -13,10 +13,10 @@ var moment = require('moment');
 var htmlToText = require('html-to-text');
 var Regex = require("regex");
 var pusher = new Pusher({
-  appId: '811086',
-  key: 'c84f4087b73a11ea3d8d',
-  secret: '320422aed0ea7acb250d',
-  cluster: 'ap2',
+  appId: '',
+  key: '',
+  secret: '',
+  cluster: '',
   encrypted: true
 });
 const port = process.env.PORT || 3000;
